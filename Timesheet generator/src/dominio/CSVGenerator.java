@@ -25,7 +25,7 @@ public class CSVGenerator {
 	
 	private Vector<String> generateLine(long[] timestamps, int dayOffset) {
 		if (dayOffset==0) {
-			float hoursWorked=time.getHourDifference(timestamps[0], timestamps[1]);
+			float hoursWorked=time.getHourDifference(timestamps[0], timestamps[1])-1;
 			return generateVectorString(timestamps[0], hoursWorked);
 		}
 		else {
