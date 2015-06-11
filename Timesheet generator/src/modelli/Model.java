@@ -31,7 +31,6 @@ public class Model {
 		int dayDifference=0;
 		currTime=System.currentTimeMillis();
 		if((dayDifference=time.getDayDifference(timestamps[0], currTime))>0) {
-			System.out.println(dayDifference);
 			CSVContainer newLines=generator.getCSV(timestamps, dayDifference);
 			timestampStart=currTime;
 			writer.write(newLines);
