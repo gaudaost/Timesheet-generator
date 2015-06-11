@@ -1,18 +1,17 @@
 package main;
 
 import persistenza.file.PersistenceDAOFile;
-import modelli.interfaccia.ModelloInterfaccia;
-import modelli.modello.ModelloInterfacciaModello;
+import modelli.Model;
 
 public class Main {
-	private static ModelloInterfaccia modello;
+	private static Model model;
 
 	public static void main(String[] args) {
 		PersistenceDAOFile persistence=PersistenceDAOFile.getPersistenza();
-		modello = new ModelloInterfacciaModello(persistence);
+		model = new Model(persistence);
 		Runnable r = new Runnable() {
 			public void run() {
-				modello.task();
+				model.task();
 			}
 		};
 		new Thread(r).start();

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <settings-timesheet>
-	<curr-proj>
+	<default-settings>
 		<curr-place>Infons</curr-place>
 		<curr-proj-title>Progetto Joomla</curr-proj-title>
-	</curr-proj>
+		<reason-of-absence-weekend>Riposo settimanale</reason-of-absence-weekend>
+	</default-settings>
 
 	<column-headers>
 		<title>Timesheet</title>

@@ -3,12 +3,12 @@ package dominio;
 import java.util.Vector;
 
 public class CSVContainer {
-	Vector<Vector<String>> csvData;
-	//Vector<String> header;
+	private Vector<Vector<String>> csvData;
+	private Vector<String> header;
 	
-	protected CSVContainer(Vector<Vector<String>> csvData) {
+	protected CSVContainer(Vector<Vector<String>> csvData,Vector<String> header) {
 		this.csvData=csvData;
-		//this.header=header;
+		this.header=header;
 	}
 	
 	public int getSize() {
@@ -20,12 +20,26 @@ public class CSVContainer {
 		return line.get(0)+"-"+line.get(1);
 	}
 	
-	public String getCSVLine(int i) {
-		String output="";
+	public String getMonth(int i) {
 		Vector<String> line=csvData.get(i);
-		for (int j = 2; j < line.size(); j++) {
-			output+=line.get(j)+";";
+		return line.get(1);
+	}
+	
+	public String getMonthName(int i) {
+		Vector<String> line=csvData.get(i);
+		return line.get(2);
+	}
+	
+	public String getCSVLine(int i) {
+		Vector<String> line=csvData.get(i);
+		String output=line.get(3);
+		for (int j = 4; j < line.size(); j++) {
+			output+=";"+line.get(j);
 		}
 		return output;
+	}
+	
+	public Vector<String> getHeader() {
+		return header;
 	}
 }

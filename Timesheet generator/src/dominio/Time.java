@@ -17,6 +17,12 @@ public class Time {
 		return sdf.format(date);
 	}
 	
+	protected int getDayOfWeek(long timestamp) {
+		Date date=new Date(timestamp);
+		SimpleDateFormat sdf=new SimpleDateFormat("u");
+		return Integer.parseInt(sdf.format(date));
+	}
+	
 	protected String getYear(long timestamp) {
 		Date date=new Date(timestamp);
 		SimpleDateFormat sdf=new SimpleDateFormat("YYYY");

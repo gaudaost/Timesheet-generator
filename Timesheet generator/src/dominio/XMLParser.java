@@ -19,6 +19,7 @@ public class XMLParser {
 	Element settings;
 	Element months;
 	Element days;
+	Element defaultSettings;
 	Vector<String> headerColumns;
 	
 	protected XMLParser() {
@@ -32,6 +33,7 @@ public class XMLParser {
 			settings=(Element)doc.getElementsByTagName("settings-timesheet").item(0);
 			months=(Element)settings.getElementsByTagName("months").item(0);
 			days=(Element)settings.getElementsByTagName("days").item(0);
+			defaultSettings=(Element)settings.getElementsByTagName("default-settings").item(0);
 			headerColumns=initiateHeaderColumns();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -45,7 +47,7 @@ public class XMLParser {
 	private Vector<String> initiateHeaderColumns() {
 		Vector<String> output=new Vector<String>();
 		NodeList headerList=settings.getElementsByTagName("column-headers").item(0).getChildNodes();
-		for (int i = 0; i < headerList.getLength(); i++) {
+		for (int i = 1; i < headerList.getLength(); i=i+2) {
 			Node node=headerList.item(i);
 			output.add(node.getTextContent());
 		}
@@ -64,5 +66,20 @@ public class XMLParser {
 	protected String getNameDay(int i) {
 		Element day=(Element)days.getElementsByTagName("day-"+i).item(0);
 		return day.getTextContent();
+	}
+	
+	protected String getCurrProj() {
+		Element currProj=(Element)defaultSettings.getElementsByTagName("curr-proj-title").item(0);
+		return currProj.getTextContent();
+	}
+	
+	protected String getCurrPlace() {
+		Element currProj=(Element)defaultSettings.getElementsByTagName("curr-place").item(0);
+		return currProj.getTextContent();
+	}
+	
+	protected String getWeReasonOfAbsence() {
+		Element currProj=(Element)defaultSettings.getElementsByTagName("reason-of-absence-weekend").item(0);
+		return currProj.getTextContent();
 	}
 }
