@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings-timesheet>
+	<default-settings>
+		<curr-place>Infons</curr-place>
+		<curr-proj-title>Progetto Joomla</curr-proj-title>
+		<reason-of-absence-weekend>Riposo settimanale</reason-of-absence-weekend>
+	</default-settings>
+
+	<column-headers>
+		<title>Timesheet</title>
+		<owner>Gaute Halvorsen</owner>
+		<day-of-month>giorno n.</day-of-month>
+		<day-of-week>g.sett.</day-of-week>
+		<hours-worked>h.lavorate</hours-worked>
+		<reason-of-absence>motivo assenza (se assenti)</reason-of-absence>
+		<project>commessa/progetto lavorato</project>
+		<place>sede</place>
+	</column-headers>
+
+	<months>
+		<month-1>Gennaio</month-1>
+		<month-2>Febbraio</month-2>
+		<month-3>Marzo</month-3>
+		<month-4>Aprile</month-4>
+		<month-5>Maggio</month-5>
+		<month-6>Giugno</month-6>
+		<month-7>Luglio</month-7>
+		<month-8>Agosto</month-8>
+		<month-9>Settembre</month-9>
+		<month-10>Ottobre</month-10>
+		<month-11>Novembre</month-11>
+		<month-12>Dicembre</month-12>
+	</months>
+
+	<days>
+		<day-1>lun</day-1>
+		<day-2>mar</day-2>
+		<day-3>mer</day-3>
+		<day-4>gio</day-4>
+		<day-5>ven</day-5>
+		<day-6>sab</day-6>
+		<day-7>dom</day-7>
+	</days>
+</settings-timesheet>
