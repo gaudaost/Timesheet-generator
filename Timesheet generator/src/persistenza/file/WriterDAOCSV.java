@@ -2,31 +2,40 @@ package persistenza.file;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Vector;
 
-import dominio.CSVContainer;
+import persistenza.dao.WriterDAO;
+import dominio.BasicContainer;
 
-public class CSVWriter {
+public class WriterDAOCSV implements WriterDAO {
 	
+	public WriterDAOCSV() {}
 	
-	public void write(CSVContainer container) {
+	public void write(BasicContainer container) {
 		for (int i = 0; i < container.getSize(); i++) {
 			String fileName=container.getYearMonth(i)+".txt";
 			File file=new File(fileName);
 			if(!file.exists()) {
 				addHeader(fileName, container,i);
 			}
-			String text=container.getCSVLine(i);
+			String text=getCSVLine(container,i);
 			addLine(text, fileName);
 		}
 	}
 	
-	private void addHeader(String fileName,CSVContainer container, int i) {
+	private String getCSVLine(BasicContainer container, int i) {
+		Vector<String> line=container.getData().get(i);
+		String output=line.get(3);
+		for (int j = 4; j < line.size(); j++) {
+			output+=";"+line.get(j);
+		}
+		return output;
+	}
+	
+	private void addHeader(String fileName,BasicContainer container, int i) {
 		Vector<String> header=container.getHeader();
 		String line1=header.get(0)+";;"+container.getMonth(i)+";"+container.getMonthName(i)+";"+header.get(1)+";";
 		String line2=header.get(2)+";"+header.get(3)+";"+header.get(4)+";"+header.get(5)+";"+header.get(6)+";"+header.get(7);

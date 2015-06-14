@@ -5,12 +5,19 @@ import modelli.Model;
 
 public class Main {
 	private static Model model;
+	public static final int FORMAT_EXCEL=0;
+	public static final int FORMAT_CSV=1;
 
 	public static void main(String[] args) {
+		//Initialize the desired state persistence
 		PersistenceDAOFile persistence=PersistenceDAOFile.getPersistenza();
-		model = new Model(persistence);
+		//Initialize the desired format of the time sheet output
+		Factory factory=ExcelFactory.getFactory();
+		//Get the model
+		model = new Model(persistence,factory);
 		Runnable r = new Runnable() {
 			public void run() {
+				//Start the main task
 				model.task();
 			}
 		};

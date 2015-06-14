@@ -1,9 +1,3 @@
 Timesheet;;06;Giugno;Gaute Halvorsen;
 giorno n.;g.sett.;h.lavorate;motivo assenza (se assenti);commessa/progetto lavorato;sede
-11;gio;-1,0;;Progetto Joomla;Infons
-12;ven;0,0;;Progetto Joomla;Infons
-13;sab;0,0;Riposo settimanale;;
-14;dom;0,0;Riposo settimanale;;
-15;lun;0,0;;Progetto Joomla;Infons
-16;mar;0,0;;Progetto Joomla;Infons
-17;mer;0,0;;Progetto Joomla;Infons
+13;sab;12,8;Riposo settimanale;;

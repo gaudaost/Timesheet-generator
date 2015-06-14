@@ -1,9 +1,10 @@
 package modelli;
 
+import main.Factory;
 import persistenza.dao.PersistenzaDAO;
-import persistenza.file.CSVWriter;
-import dominio.CSVContainer;
-import dominio.CSVGenerator;
+import persistenza.dao.WriterDAO;
+import dominio.BasicContainer;
+import dominio.BasicContainerFactory;
 import dominio.Time;
 
 public class Model {
@@ -12,14 +13,14 @@ public class Model {
 	private long timestampStart=0;
 	private long currTime=0;
 	private PersistenzaDAO persistenza;
-	private CSVGenerator generator;
-	private CSVWriter writer;
+	private BasicContainerFactory containerFactory;
+	private WriterDAO writer;
 
-	public Model(PersistenzaDAO persistenza) {
+	public Model(PersistenzaDAO persistenza, Factory factory) {
 		time =new Time();
 		this.persistenza=persistenza;
-		generator=new CSVGenerator(time);
-		writer=new CSVWriter();
+		containerFactory=factory.getContainerFactory(time);
+		writer=factory.getWriter();
 	}
 	
 	private void mainActivity()  {
@@ -29,12 +30,15 @@ public class Model {
 			timestampStart=timestamps[0];
 		}
 		int dayDifference=0;
-		currTime=System.currentTimeMillis();
+		currTime=System.currentTimeMillis()+24*60*60*1000;
 		if((dayDifference=time.getDayDifference(timestamps[0], currTime))>0) {
-			CSVContainer newLines=generator.getCSV(timestamps, dayDifference);
-			timestampStart=currTime;
+			//One or more days have passed since the last times tamp of entrance was registered, add the appropriate lines to the timesheet
+			BasicContainer newLines=containerFactory.getContainer(timestamps, dayDifference);
 			writer.write(newLines);
+			//Start a new day
+			timestampStart=currTime;
 		}
+		//Write the current time stamps
 		persistenza.write(timestampStart, currTime);
 	}
 	
