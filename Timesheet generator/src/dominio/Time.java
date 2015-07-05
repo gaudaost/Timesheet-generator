@@ -32,12 +32,11 @@ public class Time {
 	public int getDayDifference(long timestamp1, long timestamp2) {
 		int day1=Integer.parseInt(getDay(timestamp1));
 		int day2=Integer.parseInt(getDay(timestamp2));
-		if (day2>=day1) {
-			return (day2-day1);
+		if(day1!=day2 || getHourDifference(timestamp1, timestamp2)>24) {
+			return (int) Math.ceil(((double)(timestamp2-timestamp1))/(1000*60*60*24));
 		}
 		else {
-			//a new month has begun
-			return (int) Math.ceil(((double)(timestamp2-timestamp1))/(1000*60*60*24));
+			return 0;
 		}
 	}
 	

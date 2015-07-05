@@ -1,6 +1,7 @@
 package main;
 
 import persistenza.file.PersistenceDAOFile;
+import view.TaskbarIcon;
 import modelli.Model;
 
 public class Main {
@@ -22,5 +23,7 @@ public class Main {
 			}
 		};
 		new Thread(r).start();
+		//Initizialize taskbar icon
+		TaskbarIcon taskbarIcon=new TaskbarIcon();
 	}
 }

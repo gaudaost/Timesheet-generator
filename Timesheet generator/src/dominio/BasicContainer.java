@@ -11,8 +11,8 @@ public class BasicContainer {
 		this.header=header;
 	}
 	
-	public Vector<Vector<String>> getData() {
-		return data;
+	public Vector<String> getLine(int i) {
+		return data.get(i);
 	}
 	
 	public Vector<String> getHeader() {
@@ -23,6 +23,10 @@ public class BasicContainer {
 		return data.size(); 
 	}
 	
+	public String getOwner() {
+		return header.get(1);
+	}
+	
 	public String getYearMonth(int i) {
 		Vector<String> line=data.get(i);
 		return line.get(0)+"-"+line.get(1);
@@ -31,6 +35,11 @@ public class BasicContainer {
 	public String getMonth(int i) {
 		Vector<String> line=data.get(i);
 		return line.get(1);
+	}
+	
+	public String getYear(int i) {
+		Vector<String> line=data.get(i);
+		return line.get(0);
 	}
 	
 	public String getMonthName(int i) {

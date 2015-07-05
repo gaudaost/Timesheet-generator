@@ -2,6 +2,7 @@ package persistenza.file;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 import persistenza.dao.WriterDAO;
 import dominio.BasicContainer;
@@ -18,43 +19,80 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
 public class WriterDAOExcel implements WriterDAO {
+	
+	WritableWorkbook workBookOut;
+	File currFile;
 
 	@Override
 	public void write(BasicContainer container) {
-		// TODO Auto-generated method stub
-		try {
-			Workbook workbook = Workbook.getWorkbook(new File(
-					"marzo-time-ezio.xls"));
-			WritableWorkbook copy = Workbook.createWorkbook(
-					new File("test.xls"), workbook);
-			WritableSheet sheet = copy.getSheet(0);
-			for (int j = 2; j < 10; j++) {
-				for (int i = 3; i < 7; i++) {
-					WritableCell cell = sheet.getWritableCell(i, j);
-					CellFormat feautures = cell.getCellFormat();
-					Label label = new Label(i, j, "New label record");
-					addCell(sheet, Border.ALL, BorderLineStyle.THIN, i, j, "All - thin");
-					cell = sheet.getWritableCell(i, j);
-					cell.setCellFormat(feautures);
-					System.out.println(cell.getContents());
-				}
+			for (int i = 0; i < container.getSize(); i++) {
+				String titleTimeSheet=container.getMonthName(i)+"-time-"+container.getOwner();
+				File file=new File(titleTimeSheet+".xls");
+				setWorkBook(file,container.getMonth(i));
+				WritableSheet sheet = workBookOut.getSheet(0);
+				writeLine(sheet, container.getLine(i));
 			}
-			copy.write();
-			copy.close();
-		} catch (BiffException | IOException | WriteException e) {
+			saveAndClose();
+	}
+	
+	private void writeLine(WritableSheet sheet,Vector<String> line) {
+		for (int j = 5; j < line.size(); j++) {
+			int day=Integer.parseInt(line.get(3));
+			addCell(sheet, Border.ALL, BorderLineStyle.THIN, j-2, day+1, line.get(j));
+		}
+	}
+	
+	private void saveAndClose() {
+		try {
+			workBookOut.write();
+			workBookOut.close();
+		} catch (IOException | WriteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
+	private void setWorkBook(File file, String month) {
+		if(currFile!=file) {
+			//The current workbook has not been opened yet, create or load the current one
+			if(workBookOut!=null) {
+				//A workbook is already open, save and close the old one
+				saveAndClose();
+			}
+			Workbook workbook;
+			try {
+				if (file.exists()) {
+					//Still at the same month, get the current workbook
+					workbook = Workbook.getWorkbook(file);
+				} else {
+					//A new month has begun, create a new workbook from the template
+					workbook = Workbook.getWorkbook(new File("template.xls"));
+				}
+				workBookOut = Workbook.createWorkbook(file, workbook);
+				WritableSheet sheet = workBookOut.getSheet(0);
+				addCell(sheet, Border.ALL, BorderLineStyle.THIN, 3, 0, month);
+			} catch (BiffException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
-	private static void addCell(WritableSheet sheet, Border border,
-			BorderLineStyle borderLineStyle, int col, int row, String desc)
-			throws WriteException {
+	private void addCell(WritableSheet sheet, Border border,
+			BorderLineStyle borderLineStyle, int col, int row, String desc) {
 
 		WritableCellFormat cellFormat = new WritableCellFormat();
-		cellFormat.setBorder(border, borderLineStyle);
-		Label label = new Label(col, row, desc, cellFormat);
-		sheet.addCell(label);
+		try {
+			cellFormat.setBorder(border, borderLineStyle);
+			Label label = new Label(col, row, desc, cellFormat);
+			sheet.addCell(label);
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

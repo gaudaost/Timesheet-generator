@@ -27,7 +27,7 @@ public class WriterDAOCSV implements WriterDAO {
 	}
 	
 	private String getCSVLine(BasicContainer container, int i) {
-		Vector<String> line=container.getData().get(i);
+		Vector<String> line=container.getLine(i);
 		String output=line.get(3);
 		for (int j = 4; j < line.size(); j++) {
 			output+=";"+line.get(j);

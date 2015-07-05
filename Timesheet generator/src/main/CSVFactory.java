@@ -2,7 +2,7 @@ package main;
 
 import persistenza.dao.WriterDAO;
 import persistenza.file.WriterDAOCSV;
-import dominio.BasicContainerFactory;
+import dominio.BasicContainerBuilder;
 import dominio.Time;
 
 public class CSVFactory implements Factory {
@@ -12,8 +12,8 @@ public class CSVFactory implements Factory {
 	}
 
 	@Override
-	public BasicContainerFactory getContainerFactory(Time time) {
-		return new BasicContainerFactory(time);
+	public BasicContainerBuilder getContainerFactory(Time time) {
+		return new BasicContainerBuilder(time);
 	}
 
 	@Override

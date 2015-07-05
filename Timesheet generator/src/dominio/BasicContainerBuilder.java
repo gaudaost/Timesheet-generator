@@ -4,12 +4,12 @@ import java.util.Vector;
 
 import main.Main;
 
-public class BasicContainerFactory {
+public class BasicContainerBuilder {
 
 	XMLParser parser;
 	Time time;
 
-	public BasicContainerFactory(Time time) {
+	public BasicContainerBuilder(Time time) {
 		this.time = time;
 		parser = new XMLParser();
 	}

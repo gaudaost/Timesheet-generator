@@ -2,7 +2,7 @@ package main;
 
 import persistenza.dao.WriterDAO;
 import persistenza.file.WriterDAOExcel;
-import dominio.BasicContainerFactory;
+import dominio.BasicContainerBuilder;
 import dominio.Time;
 
 public class ExcelFactory implements Factory {
@@ -13,8 +13,8 @@ public class ExcelFactory implements Factory {
 	}
 
 	@Override
-	public BasicContainerFactory getContainerFactory(Time time) {
-		return new BasicContainerFactory(time);
+	public BasicContainerBuilder getContainerFactory(Time time) {
+		return new BasicContainerBuilder(time);
 	}
 
 	@Override
