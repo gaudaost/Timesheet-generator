@@ -1,8 +1,8 @@
 package modelli;
 
 import main.Factory;
-import persistenza.dao.PersistenzaDAO;
-import persistenza.dao.WriterDAO;
+import datatier.state.dao.PersistenzaDAO;
+import datatier.timesheet.dao.WriterDAO;
 import dominio.Time;
 import dominio.TimesheetData;
 import dominio.TimesheetDataBuilder;

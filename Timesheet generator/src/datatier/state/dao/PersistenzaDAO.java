@@ -1,4 +1,4 @@
-package persistenza.dao;
+package datatier.state.dao;
 
 public interface PersistenzaDAO {
 	//Writes the first and last timestamp registered 

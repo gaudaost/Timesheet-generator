@@ -1,7 +1,7 @@
 package main;
 
-import persistenza.dao.WriterDAO;
-import persistenza.file.WriterDAOCSV;
+import datatier.timesheet.dao.WriterDAO;
+import datatier.timesheet.implementations.WriterDAOCSV;
 import dominio.Time;
 
 public class CSVFactory implements Factory {

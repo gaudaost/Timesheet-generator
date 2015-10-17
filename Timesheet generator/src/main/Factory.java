@@ -1,6 +1,6 @@
 package main;
 
-import persistenza.dao.WriterDAO;
+import datatier.timesheet.dao.WriterDAO;
 import dominio.Time;
 
 public interface Factory {

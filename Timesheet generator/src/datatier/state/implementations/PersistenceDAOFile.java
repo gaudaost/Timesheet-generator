@@ -1,4 +1,4 @@
-package persistenza.file;
+package datatier.state.implementations;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-import persistenza.dao.PersistenzaDAO;
+import datatier.state.dao.PersistenzaDAO;
 
 public class PersistenceDAOFile implements PersistenzaDAO {
 	private static PersistenceDAOFile persistenza;

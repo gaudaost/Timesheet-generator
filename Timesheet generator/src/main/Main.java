@@ -1,6 +1,5 @@
 package main;
 
-import persistenza.file.PersistenceDAOFile;
 import view.TaskbarIcon;
 
 import java.awt.*;
@@ -11,6 +10,7 @@ import java.nio.file.Paths;
 
 import javax.swing.*;
 
+import datatier.state.implementations.PersistenceDAOFile;
 import modelli.Model;
 public class Main {
 	private static Model model;
