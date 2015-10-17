@@ -29,10 +29,16 @@ public class Time {
 		return sdf.format(date);
 	}
 	
+	protected String getDate(long timestamp) {
+		Date date=new Date(timestamp);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");
+		return sdf.format(date);
+	}
+	
 	public int getDayDifference(long timestamp1, long timestamp2) {
-		int day1=Integer.parseInt(getDay(timestamp1));
-		int day2=Integer.parseInt(getDay(timestamp2));
-		if(day1!=day2 || getHourDifference(timestamp1, timestamp2)>24) {
+		String day1=getDate(timestamp1);
+		String day2=getDate(timestamp2);
+		if(!day1.equals(day2)) {
 			return (int) Math.ceil(((double)(timestamp2-timestamp1))/(1000*60*60*24));
 		}
 		else {

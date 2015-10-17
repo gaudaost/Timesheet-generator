@@ -2,8 +2,16 @@ package main;
 
 import persistenza.file.PersistenceDAOFile;
 import view.TaskbarIcon;
-import modelli.Model;
 
+import java.awt.*;
+import java.awt.event.*;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.swing.*;
+
+import modelli.Model;
 public class Main {
 	private static Model model;
 	public static final int FORMAT_EXCEL=0;
@@ -25,5 +33,6 @@ public class Main {
 		new Thread(r).start();
 		//Initizialize taskbar icon
 		TaskbarIcon taskbarIcon=new TaskbarIcon();
+		taskbarIcon.create();
 	}
 }

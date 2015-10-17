@@ -2,7 +2,6 @@ package main;
 
 import persistenza.dao.WriterDAO;
 import persistenza.file.WriterDAOExcel;
-import dominio.BasicContainerBuilder;
 import dominio.Time;
 
 public class ExcelFactory implements Factory {
@@ -10,11 +9,6 @@ public class ExcelFactory implements Factory {
 	private static CSVFactory excelFactory;
 
 	private ExcelFactory() {
-	}
-
-	@Override
-	public BasicContainerBuilder getContainerFactory(Time time) {
-		return new BasicContainerBuilder(time);
 	}
 
 	@Override

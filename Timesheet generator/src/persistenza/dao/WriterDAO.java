@@ -1,7 +1,7 @@
 package persistenza.dao;
 
-import dominio.BasicContainer;
+import dominio.TimesheetData;
 
 public interface WriterDAO {
-	public void write(BasicContainer container);
+	public void write(TimesheetData container);
 }

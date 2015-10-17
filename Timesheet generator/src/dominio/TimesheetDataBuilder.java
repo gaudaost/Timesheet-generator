@@ -4,12 +4,12 @@ import java.util.Vector;
 
 import main.Main;
 
-public class BasicContainerBuilder {
+public class TimesheetDataBuilder {
 
 	XMLParser parser;
 	Time time;
 
-	public BasicContainerBuilder(Time time) {
+	public TimesheetDataBuilder(Time time) {
 		this.time = time;
 		parser = new XMLParser();
 	}
@@ -55,11 +55,11 @@ public class BasicContainerBuilder {
 		}
 	}
 
-	public BasicContainer getContainer(long[] timestamps,int differenceDays) {
+	public TimesheetData getData(long[] timestamps,int differenceDays) {
 		Vector<Vector<String>> csvData = new Vector<Vector<String>>();
 		for (int i = 0; i < differenceDays; i++) {
 			csvData.add(generateLine(timestamps, i));
 		}
-		return new BasicContainer(csvData, parser.getHeader());
+		return new TimesheetData(csvData, parser.getHeader());
 	}
 }

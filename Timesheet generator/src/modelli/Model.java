@@ -3,9 +3,9 @@ package modelli;
 import main.Factory;
 import persistenza.dao.PersistenzaDAO;
 import persistenza.dao.WriterDAO;
-import dominio.BasicContainer;
-import dominio.BasicContainerBuilder;
 import dominio.Time;
+import dominio.TimesheetData;
+import dominio.TimesheetDataBuilder;
 
 public class Model {
 	private Time time;
@@ -13,13 +13,12 @@ public class Model {
 	private long timestampStart=0;
 	private long currTime=0;
 	private PersistenzaDAO persistenza;
-	private BasicContainerBuilder containerFactory;
+	private TimesheetDataBuilder timesheetBuilder;
 	private WriterDAO writer;
 
 	public Model(PersistenzaDAO persistenza, Factory factory) {
 		time =new Time();
 		this.persistenza=persistenza;
-		containerFactory=factory.getContainerFactory(time);
 		writer=factory.getWriter();
 	}
 	
@@ -33,7 +32,7 @@ public class Model {
 		currTime=System.currentTimeMillis();//+(long)50*24*60*60*1000;
 		if((dayDifference=time.getDayDifference(timestamps[0], currTime))>0) {
 			//One or more days have passed since the last time stamp of entrance was registered, add the appropriate lines to the timesheet
-			BasicContainer newLines=containerFactory.getContainer(timestamps, dayDifference);
+			TimesheetData newLines=timesheetBuilder.getData(timestamps, dayDifference);
 			writer.write(newLines);
 			//Start a new day
 			timestampStart=currTime;

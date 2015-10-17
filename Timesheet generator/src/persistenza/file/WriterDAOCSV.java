@@ -8,13 +8,13 @@ import java.io.PrintWriter;
 import java.util.Vector;
 
 import persistenza.dao.WriterDAO;
-import dominio.BasicContainer;
+import dominio.TimesheetData;
 
 public class WriterDAOCSV implements WriterDAO {
 	
 	public WriterDAOCSV() {}
 	
-	public void write(BasicContainer container) {
+	public void write(TimesheetData container) {
 		for (int i = 0; i < container.getSize(); i++) {
 			String fileName=container.getYearMonth(i)+".txt";
 			File file=new File(fileName);
@@ -26,7 +26,7 @@ public class WriterDAOCSV implements WriterDAO {
 		}
 	}
 	
-	private String getCSVLine(BasicContainer container, int i) {
+	private String getCSVLine(TimesheetData container, int i) {
 		Vector<String> line=container.getLine(i);
 		String output=line.get(3);
 		for (int j = 4; j < line.size(); j++) {
@@ -35,7 +35,7 @@ public class WriterDAOCSV implements WriterDAO {
 		return output;
 	}
 	
-	private void addHeader(String fileName,BasicContainer container, int i) {
+	private void addHeader(String fileName,TimesheetData container, int i) {
 		Vector<String> header=container.getHeader();
 		String line1=header.get(0)+";;"+container.getMonth(i)+";"+container.getMonthName(i)+";"+header.get(1)+";";
 		String line2=header.get(2)+";"+header.get(3)+";"+header.get(4)+";"+header.get(5)+";"+header.get(6)+";"+header.get(7);

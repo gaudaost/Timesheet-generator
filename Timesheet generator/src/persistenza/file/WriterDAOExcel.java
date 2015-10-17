@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import persistenza.dao.WriterDAO;
-import dominio.BasicContainer;
+import dominio.TimesheetData;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
@@ -24,7 +24,7 @@ public class WriterDAOExcel implements WriterDAO {
 	File currFile;
 
 	@Override
-	public void write(BasicContainer container) {
+	public void write(TimesheetData container) {
 			for (int i = 0; i < container.getSize(); i++) {
 				String titleTimeSheet=container.getMonthName(i)+"-time-"+container.getOwner();
 				File file=new File(titleTimeSheet+".xls");

@@ -2,11 +2,11 @@ package dominio;
 
 import java.util.Vector;
 
-public class BasicContainer {
+public class TimesheetData {
 	private Vector<Vector<String>> data;
 	private Vector<String> header;
 	
-	protected BasicContainer(Vector<Vector<String>> csvData,Vector<String> header) {
+	protected TimesheetData(Vector<Vector<String>> csvData,Vector<String> header) {
 		this.data=csvData;
 		this.header=header;
 	}
