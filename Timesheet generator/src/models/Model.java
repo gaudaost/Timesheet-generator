@@ -24,6 +24,7 @@ public class Model {
 	
 	private void mainActivity()  {
 		long[] timestamps=stateWriter.read();
+		//Check if this is the first time that this function is run after the instantiation of the Model class
 		if (timestampStart==0) {
 			//Even if you were to travel back in time or set your computer clock back to the 1970s, this is still correct as it represents midnight: a new day begins:
 			timestampStart=timestamps[0];

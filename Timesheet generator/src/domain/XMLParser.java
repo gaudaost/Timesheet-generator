@@ -24,11 +24,11 @@ public class XMLParser {
 	
 	protected XMLParser() {
 		try {
-			File fXmlFile = new File("src/settings/settings-it.xml");
+			File xmlFile = new File("src/settings/settings-it.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
 			dBuilder = dbFactory.newDocumentBuilder();
-			Document doc =  dBuilder.parse(fXmlFile);
+			Document doc =  dBuilder.parse(xmlFile);
 			doc.getDocumentElement().normalize();
 			settings=(Element)doc.getElementsByTagName("settings-timesheet").item(0);
 			months=(Element)settings.getElementsByTagName("months").item(0);
