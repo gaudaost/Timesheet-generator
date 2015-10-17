@@ -1,8 +1,9 @@
-package main;
+package factory;
 
+import datatier.state.dao.PersistenceDAOState;
+import datatier.state.implementations.PersistenceDAOStateFile;
 import datatier.timesheet.dao.WriterDAO;
 import datatier.timesheet.implementations.WriterDAOCSV;
-import dominio.Time;
 
 public class CSVFactory implements Factory {
 	private static CSVFactory csvFactory;
@@ -11,7 +12,7 @@ public class CSVFactory implements Factory {
 	}
 
 	@Override
-	public WriterDAO getWriter() {
+	public WriterDAO getTimesheetWriter() {
 		return new WriterDAOCSV();
 	}
 
@@ -24,6 +25,11 @@ public class CSVFactory implements Factory {
 			}
 		}
 		return csvFactory;
+	}
+	
+	@Override
+	public PersistenceDAOState getStateWriter() {
+		return PersistenceDAOStateFile.getPersistenza();
 	}
 
 }

@@ -1,6 +1,6 @@
 package datatier.timesheet.dao;
 
-import dominio.TimesheetData;
+import domain.TimesheetData;
 
 public interface WriterDAO {
 	public void write(TimesheetData container);

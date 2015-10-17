@@ -1,8 +1,6 @@
-package dominio;
+package domain;
 
 import java.util.Vector;
-
-import main.Main;
 
 public class TimesheetDataBuilder {
 

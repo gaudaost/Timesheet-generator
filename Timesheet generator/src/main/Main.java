@@ -1,29 +1,20 @@
 package main;
 
-import view.TaskbarIcon;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import javax.swing.*;
-
-import datatier.state.implementations.PersistenceDAOFile;
-import modelli.Model;
+import datatier.state.implementations.PersistenceDAOStateFile;
+import factory.ExcelFactory;
+import factory.Factory;
+import models.Model;
+import views.TaskbarIcon;
 public class Main {
 	private static Model model;
 	public static final int FORMAT_EXCEL=0;
 	public static final int FORMAT_CSV=1;
 
 	public static void main(String[] args) {
-		//Initialize the desired state persistence
-		PersistenceDAOFile persistence=PersistenceDAOFile.getPersistenza();
 		//Initialize the desired format of the time sheet output
 		Factory factory=ExcelFactory.getFactory();
 		//Get the model
-		model = new Model(persistence,factory);
+		model = new Model(factory);
 		Runnable r = new Runnable() {
 			public void run() {
 				//Start the main task

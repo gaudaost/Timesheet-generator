@@ -6,21 +6,21 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 
-import datatier.state.dao.PersistenzaDAO;
+import datatier.state.dao.PersistenceDAOState;
 
-public class PersistenceDAOFile implements PersistenzaDAO {
-	private static PersistenceDAOFile persistenza;
+public class PersistenceDAOStateFile implements PersistenceDAOState {
+	private static PersistenceDAOStateFile persistenza;
 	private final String nomeFile = "ultimascrittura.txt";
 
-	private PersistenceDAOFile() {
+	private PersistenceDAOStateFile() {
 	}
 
-	public static PersistenceDAOFile getPersistenza() {
+	public static PersistenceDAOStateFile getPersistenza() {
 		// ensures that the persistence is never instantiated more than once
 		if (persistenza == null) {
-			synchronized (PersistenceDAOFile.class) {
+			synchronized (PersistenceDAOStateFile.class) {
 				if (persistenza == null) {
-					return new PersistenceDAOFile();
+					return new PersistenceDAOStateFile();
 				}
 			}
 		}

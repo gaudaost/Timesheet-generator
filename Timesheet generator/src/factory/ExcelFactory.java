@@ -1,8 +1,9 @@
-package main;
+package factory;
 
+import datatier.state.dao.PersistenceDAOState;
+import datatier.state.implementations.PersistenceDAOStateFile;
 import datatier.timesheet.dao.WriterDAO;
 import datatier.timesheet.implementations.WriterDAOExcel;
-import dominio.Time;
 
 public class ExcelFactory implements Factory {
 	
@@ -10,9 +11,9 @@ public class ExcelFactory implements Factory {
 
 	private ExcelFactory() {
 	}
-
+	
 	@Override
-	public WriterDAO getWriter() {
+	public WriterDAO getTimesheetWriter() {
 		return new WriterDAOExcel();
 	}
 	
@@ -25,6 +26,11 @@ public class ExcelFactory implements Factory {
 			}
 		}
 		return excelFactory;
+	}
+
+	@Override
+	public PersistenceDAOState getStateWriter() {
+		return PersistenceDAOStateFile.getPersistenza();
 	}
 
 }

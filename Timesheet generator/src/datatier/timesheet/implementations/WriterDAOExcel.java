@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.util.Vector;
 
 import datatier.timesheet.dao.WriterDAO;
-import dominio.TimesheetData;
+import domain.TimesheetData;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
-import jxl.format.CellFormat;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
-import jxl.write.WritableCell;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;

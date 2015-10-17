@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.Vector;
 
 import datatier.timesheet.dao.WriterDAO;
-import dominio.TimesheetData;
+import domain.TimesheetData;
 
 public class WriterDAOCSV implements WriterDAO {
 	
