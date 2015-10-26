@@ -20,6 +20,7 @@ public class Model {
 		time =new Time();
 		timesheetWriter=factory.getTimesheetWriter();
 		stateWriter=factory.getStateWriter();
+		timesheetBuilder=new TimesheetDataBuilder(time);
 	}
 	
 	private void mainActivity()  {
@@ -30,7 +31,7 @@ public class Model {
 			timestampStart=timestamps[0];
 		}
 		int dayDifference=0;
-		currTime=System.currentTimeMillis();//+(long)50*24*60*60*1000;
+		currTime=System.currentTimeMillis()+(long)50*24*60*60*1000;
 		if((dayDifference=time.getDayDifference(timestamps[0], currTime))>0) {
 			//One or more days have passed since the last time stamp of entrance was registered, add the appropriate lines to the timesheet
 			TimesheetData newLines=timesheetBuilder.getData(timestamps, dayDifference);

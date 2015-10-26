@@ -5,34 +5,30 @@ import java.text.SimpleDateFormat;
 
 public class Time {
 	
-	protected String getDay(long timestamp) {
+	private String getFormatedDate(long timestamp, String format) {
 		Date date=new Date(timestamp);
-		SimpleDateFormat sdf=new SimpleDateFormat("dd");
+		SimpleDateFormat sdf=new SimpleDateFormat(format);
 		return sdf.format(date);
+	}
+	
+	protected String getDay(long timestamp) {
+		return getFormatedDate(timestamp, "dd");
 	}
 	
 	protected String getMonth(long timestamp) {
-		Date date=new Date(timestamp);
-		SimpleDateFormat sdf=new SimpleDateFormat("MM");
-		return sdf.format(date);
+		return getFormatedDate(timestamp, "MM");
 	}
 	
 	protected int getDayOfWeek(long timestamp) {
-		Date date=new Date(timestamp);
-		SimpleDateFormat sdf=new SimpleDateFormat("u");
-		return Integer.parseInt(sdf.format(date));
+		return Integer.parseInt(getFormatedDate(timestamp, "u"));
 	}
 	
 	protected String getYear(long timestamp) {
-		Date date=new Date(timestamp);
-		SimpleDateFormat sdf=new SimpleDateFormat("YYYY");
-		return sdf.format(date);
+		return getFormatedDate(timestamp, "YYYY");
 	}
 	
 	protected String getDate(long timestamp) {
-		Date date=new Date(timestamp);
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-YYYY");
-		return sdf.format(date);
+		return getFormatedDate(timestamp, "dd-MM-YYYY");
 	}
 	
 	public int getDayDifference(long timestamp1, long timestamp2) {

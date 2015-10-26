@@ -49,7 +49,6 @@ public class TaskbarIcon {
 			tray.add(trayIcon);
 		} catch (AWTException e) {
 			System.out.println("TrayIcon could not be added.");
-			return;
 		}
 		trayIcon.addActionListener(new TaskbarController());
 		aboutItem.addActionListener(new TaskbarController());

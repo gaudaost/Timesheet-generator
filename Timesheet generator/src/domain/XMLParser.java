@@ -2,6 +2,7 @@ package domain;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Vector;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -24,7 +25,7 @@ public class XMLParser {
 	
 	protected XMLParser() {
 		try {
-			File xmlFile = new File("src/settings/settings-it.xml");
+			File xmlFile = new File(ClassLoader.getSystemResource("settings/settings-it.xml").getFile());
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
 			dBuilder = dbFactory.newDocumentBuilder();
