@@ -25,7 +25,7 @@ public class XMLParser {
 	
 	protected XMLParser() {
 		try {
-			File xmlFile = new File(ClassLoader.getSystemResource("settings/settings-it.xml").getFile());
+			File xmlFile = new File(ClassLoader.getSystemResource("settings-it.xml").getFile());
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder;
 			dBuilder = dbFactory.newDocumentBuilder();

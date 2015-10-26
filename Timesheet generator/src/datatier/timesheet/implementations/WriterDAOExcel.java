@@ -69,7 +69,7 @@ public class WriterDAOExcel implements WriterDAO {
 			} else {
 				// A new month has begun, create a new workbook from the
 				// template
-				workbook = Workbook.getWorkbook(new File("template.xls"));
+				workbook = Workbook.getWorkbook(new File(ClassLoader.getSystemResource("template.xls").getFile()));
 			}
 			workBookOut = Workbook.createWorkbook(file, workbook);
 			WritableSheet sheet = workBookOut.getSheet(0);
