@@ -1,6 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+    <properties>
+        <jdk.version>1.7</jdk.version>
+    </properties>
 	<groupId>Timesheet-generator</groupId>
 	<artifactId>Timesheet-generator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -28,10 +32,19 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>src.main.java.main.Main</mainClass>
+							<mainClass>main.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
+				<executions>
+					<execution>
+						<id>make-my-jar-with-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

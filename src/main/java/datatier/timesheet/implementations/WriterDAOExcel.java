@@ -70,12 +70,12 @@ public class WriterDAOExcel implements WriterDAO {
 			} else {
 				// A new month has begun, create a new workbook from the
 				// template
-				workbook = Workbook.getWorkbook(new File(getClass().getResource("/template.xls").toURI()));
+				workbook = Workbook.getWorkbook(getClass().getResourceAsStream("/template.xls"));
 			}
 			workBookOut = Workbook.createWorkbook(file, workbook);
 			WritableSheet sheet = workBookOut.getSheet(0);
 			addCell(sheet, Border.ALL, BorderLineStyle.THIN, 3, 0, month);
-		} catch (BiffException | IOException | URISyntaxException e) {
+		} catch (BiffException | IOException e) {
 			e.printStackTrace();
 		}
 	}
